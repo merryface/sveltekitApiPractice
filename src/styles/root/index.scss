@@ -1,4 +1,26 @@
 .home {
+  &__subheading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+  }
+
+  &__articlesLink {
+    background: #000;
+    border: 2px solid #fff;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    display:inline-block;
+
+    &:hover {
+      background-color: rgb(12, 0, 65);
+      color: #ff0;
+    }
+  }
+
   &__text {
     margin-bottom: 2rem;
   }
