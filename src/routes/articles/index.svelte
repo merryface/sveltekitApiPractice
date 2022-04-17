@@ -30,7 +30,7 @@
 
   <ul class="Articles__list">
     {#each articles as article}
-    <a href={`/articles/${article.id}`}><li class="Articles__list-item">{ article.title }</li></a>
+    <a sveltekit:prefetch href={`/articles/${article.id}`}><li class="Articles__list-item">{ article.title }</li></a>
     {/each}
   </ul>
 </div>
