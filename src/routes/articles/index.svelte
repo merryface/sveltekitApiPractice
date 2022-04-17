@@ -1,6 +1,8 @@
 <script context="module">
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   export async function load({ fetch }) {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const res = await fetch(`${baseUrl}/posts`)
     const articles = await res.json()
 
     if (res.ok) {
