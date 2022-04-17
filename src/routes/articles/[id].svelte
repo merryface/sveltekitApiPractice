@@ -1,4 +1,29 @@
+<script context="module">
+  export async function load({ fetch, params }) {
+    const id = params.id
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    const article = await res.json()
+
+    if (res.ok) {
+      return {
+        props: {
+          article
+        }
+      }
+    }
+
+    return {
+      status: res.status,
+      error: new Error('Could not fetch article')
+    }
+  }
+</script>
+
+<script>
+  export let article
+</script>
+
 <div class="Article">
-  <h1 class="Article__title">This is an Article</h1>
-  <p class="Article__body">This is an article's content</p>
+  <h1 class="Article__title">{ article.title }</h1>
+  <p class="Article__body">{ article.body }</p>
 </div>

@@ -1,5 +1,27 @@
+<script context="module">
+  export async function load({ fetch }) {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const articles = await res.json()
+
+    if (res.ok) {
+      return {
+        props: {
+          articles
+        }
+      }
+    }
+
+    return {
+      status: res.status,
+      error: new Error('Could not fetch articles')
+    }
+  }
+</script>
+
 <script>
   import '../../styles/articles/index.scss'
+
+  export let articles;
 </script>
 
 <div class="Articles">
@@ -7,9 +29,9 @@
   <p class="Articles__text">Here are some articles about Space... not really actually. Although maybe I could sort that out one day...</p>
 
   <ul class="Articles__list">
-    <a href="/articles/1"><li class="Articles__list-item">Bruno finally goes home to Mars</li></a>
-    <a href="/articles/2"><li class="Articles__list-item">Warp speed... or warped vision?</li></a>
-    <a href="/articles/3"><li class="Articles__list-item">SpaceX launches DogeCoin Satellite</li></a>
+    {#each articles as article}
+    <a href={`/articles/${article.id}`}><li class="Articles__list-item">{ article.title }</li></a>
+    {/each}
   </ul>
 </div>
 
